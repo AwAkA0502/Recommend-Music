@@ -1,0 +1,47 @@
+# Byte-compiled / cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+
+# Virtual environments
+venv*/
+.venv/
+env/
+ENV/
+env.bak/
+venv-essentia/
+
+# Environment files
+.env
+*.env
+
+# Cache / Logs
+.cache/
+*.log
+logs/
+debug.log
+
+# Data files
+data/
+*.csv
+*.tsv
+*.json
+*.xlsx
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build / Distribution
+build/
+dist/
+*.egg-info/
+.eggs/
