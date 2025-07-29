@@ -2,6 +2,7 @@
 .DS_Store
 .vscode/
 .idea/
+Thumbs.db
 
 # Python Backend
 python/__pycache__/
@@ -13,6 +14,16 @@ python/*.csv
 python/*.json
 python/*.xlsx
 python/*.tsv
+python/*.log
+python/logs/
+python/.ipynb_checkpoints/
+python/build/
+python/dist/
+python/*.egg-info/
+python/.mypy_cache/
+python/.pytest_cache/
+python/.coverage
+python/htmlcov/
 
 # Node Frontend
 recommend-music/node_modules/
@@ -21,6 +32,20 @@ recommend-music/out/
 recommend-music/dist/
 recommend-music/.env
 recommend-music/package-lock.json
+recommend-music/yarn.lock
+recommend-music/npm-debug.log*
+recommend-music/yarn-debug.log*
+recommend-music/yarn-error.log*
+recommend-music/.turbo/
+recommend-music/.vercel/
+recommend-music/.swc/
+
+# Logs
+*.log
+logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Cache
+.cache/
