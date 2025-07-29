@@ -1,0 +1,47 @@
+  // This is your Prisma schema file,
+  // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+  // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+  // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+  generator client {
+    provider = "prisma-client-js"
+  }
+
+  datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+  }
+
+  model UserInput {
+    id          Int      @id @default(autoincrement())
+    age         Int
+    profession  String
+    description String
+    mood        String
+    createdAt   DateTime @default(now())
+  }
+
+  model Track {
+    id           Int    @id @default(autoincrement())
+    track_name   String?
+    artist_name  String?
+    track_id     String
+    description  String @db.Text
+    emotion      String?
+  }
+
+model User {
+  id          Int      @id @default(autoincrement())
+  username    String?  @unique // Optional untuk user Google-only
+  email       String   @unique
+  password    String?  // Nullable (user Google-only tidak punya password manual)
+  googleId    String?  @unique // Untuk OAuth Google, nullable
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Tambahan untuk keperluan lain
+  // name        String?
+  // avatarUrl   String?
+}
+  
