@@ -19,11 +19,15 @@ app.add_middleware(
 model = SentenceTransformer('LazarusNLP/all-indo-e5-small-v4')
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-file_path_model = os.path.join(script_dir, '../recommend-music/Dataset_Lagu_Indonesia_with_embedding_LazarusNLP-all-indo-e5-small-v4.json')
+# Pastikan path dataset menggunakan path absolut agar tidak bermasalah di server
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+file_path_model = os.path.join(BASE_DIR, 'recommend-music', 'Dataset_Lagu_Indonesia_with_embedding_LazarusNLP-all-indo-e5-small-v4.json')
 
-with open(file_path_model, 'r', encoding='utf-8') as f:
-    semua_lagu = json.load(f)
+try:
+    with open(file_path_model, 'r', encoding='utf-8') as f:
+        semua_lagu = json.load(f)
+except FileNotFoundError:
+    raise RuntimeError(f"Dataset file not found at {file_path_model}. Pastikan file JSON tersedia di lokasi yang benar.")
 
 async def get_mood_label(user_text: str) -> list:
     prompt = f"""
