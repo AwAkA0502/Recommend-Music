@@ -19,9 +19,9 @@ app.add_middleware(
 model = SentenceTransformer('LazarusNLP/all-indo-e5-small-v4')
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Pastikan path dataset menggunakan path absolut agar tidak bermasalah di server
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-file_path_model = os.path.join(BASE_DIR, 'recommend-music', 'Dataset_Lagu_Indonesia_with_embedding_LazarusNLP-all-indo-e5-small-v4.json')
+# BASE_DIR sekarang menunjuk ke folder root project (/var/www/Recommend-Music)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+file_path_model = os.path.join(BASE_DIR, "recommend-music", "Dataset_Lagu_Indonesia_with_embedding_LazarusNLP-all-indo-e5-small-v4.json")
 
 try:
     with open(file_path_model, 'r', encoding='utf-8') as f:
