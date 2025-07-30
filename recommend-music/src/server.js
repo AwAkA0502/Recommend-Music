@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5050;
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://147.93.107.169:3000'],
   credentials: true,
 }));
 
@@ -23,7 +23,7 @@ app.use(session({
     secure: false, // true kalau pakai HTTPS
     httpOnly: true,
     sameSite: "lax",
-    domain: "localhost", // <- tambahkan ini!
+    domain: "147.93.107.169", // ganti dari localhost ke IP publik
     path: "/",           // <- pastikan path root!
   } // secure: true jika pakai https di production
 }));
@@ -45,5 +45,5 @@ app.get('/', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://147.93.107.169:${PORT}`);
 });
