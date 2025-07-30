@@ -38,21 +38,21 @@ export default function LoginPage() {
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-100 to-white px-4">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-lg p-8 flex flex-col gap-6">
         <h1 className="text-3xl font-bold text-green-700 text-center">Login</h1>
-        
+
         {/* Google Login */}
         <a
-          href="http://localhost:5050/api/auth/google"
+          href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/google`}
           className="flex items-center justify-center gap-2 w-full py-2 rounded-full border border-gray-300 shadow-sm text-gray-700 font-semibold hover:bg-gray-100 transition"
         >
           <img src="/images/google_icon.png" alt="Google" className="w-5 h-5" />
           Login dengan Google
         </a>
-        
+
         <div className="relative text-center">
           <span className="bg-white px-2 text-gray-400 z-10 relative">atau</span>
-          <div className="absolute left-0 top-1/2 w-full border-t border-gray-200 -z-0" style={{transform: 'translateY(-50%)'}} />
+          <div className="absolute left-0 top-1/2 w-full border-t border-gray-200 -z-0" style={{ transform: 'translateY(-50%)' }} />
         </div>
-        
+
         {/* Manual Login */}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
