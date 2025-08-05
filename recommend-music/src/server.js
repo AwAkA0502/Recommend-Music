@@ -20,11 +20,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true, // true kalau pakai HTTPS
+    secure: true,
     httpOnly: true,
     sameSite: "none",
-    domain: "awakatune.com", // ganti dari localhost ke IP publik
-    path: "/",           // <- pastikan path root!
+    domain: process.env.NODE_ENV === "production" ? "awakatune.com" : undefined,
+    path: "/"
   } // secure: true jika pakai https di production
 }));
 
@@ -37,6 +37,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Route auth (login manual & google)
 app.use('/api/auth', authRoutes);
+
+// Debug log untuk route yang tidak dikenali
+app.use((req, res, next) => {
+  console.log("Incoming request:", req.method, req.originalUrl);
+  next();
+});
 
 // Route lain (optional)
 app.get('/', (req, res) => {

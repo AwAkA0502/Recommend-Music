@@ -11,7 +11,7 @@ router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: true }),
   (req, res) => {
     // Redirect ke frontend Next.js (landing page)
-    res.redirect('http://localhost:3000/');
+    res.redirect(process.env.FRONTEND_URL || 'https://awakatune.com/');
   }
 );
 
