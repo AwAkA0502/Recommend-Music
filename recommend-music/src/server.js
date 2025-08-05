@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5050;
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://147.93.107.169:3000'],
+  origin: ['http://localhost:3000', 'http://147.93.107.169:3000', 'https://awakatune.com'],
   credentials: true,
 }));
 
@@ -20,10 +20,10 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false, // true kalau pakai HTTPS
+    secure: true, // true kalau pakai HTTPS
     httpOnly: true,
-    sameSite: "lax",
-    domain: "147.93.107.169", // ganti dari localhost ke IP publik
+    sameSite: "none",
+    domain: "awakatune.com", // ganti dari localhost ke IP publik
     path: "/",           // <- pastikan path root!
   } // secure: true jika pakai https di production
 }));
