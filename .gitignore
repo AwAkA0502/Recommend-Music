@@ -31,7 +31,6 @@ recommend-music/.next/
 recommend-music/out/
 recommend-music/dist/
 recommend-music/.env
-recommend-music/package-lock.json
 recommend-music/yarn.lock
 recommend-music/npm-debug.log*
 recommend-music/yarn-debug.log*
