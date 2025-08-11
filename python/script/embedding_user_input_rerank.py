@@ -5,7 +5,6 @@ import os
 from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from dotenv import load_dotenv
-load_dotenv()
 
 
 app = FastAPI()
@@ -21,6 +20,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # BASE_DIR sekarang menunjuk ke folder root project (/var/www/Recommend-Music)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+load_dotenv(os.path.join(BASE_DIR, "python", ".env"))
 file_path_model = os.path.join(BASE_DIR, "recommend-music", "Dataset_Lagu_Indonesia_with_embedding_LazarusNLP-all-indo-e5-small-v4.json")
 
 try:
